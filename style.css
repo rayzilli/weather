@@ -8,6 +8,17 @@ body {
     gap: 22px; 
 }
 
+.max-min-day {
+    display: flex; 
+    gap: 15px; 
+}
+
 h1 {
     display: none; 
 }
+
+section#weekly-weather > h2{
+      display: none; 
+}
+
+

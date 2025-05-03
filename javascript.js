@@ -1,4 +1,10 @@
 //find location and return weather data
+const dailyTemp = document.querySelector("#temperature");
+const currentCondition = document.querySelector("#current-condition");
+const highToday = document.querySelector("#hi-today");
+const lowToday = document.querySelector("#low-today");
+const dayDescription = document.querySelector("#current-description")
+
 async function getWeather() {
   
     try {   
@@ -23,14 +29,23 @@ function myLocation (){
 
 async function renderWeather() {
     const weatherData = await getWeather();
-    console.log(weatherData);
-    console.log(weatherData.currentConditions.temp)
-    console.log(weatherData.currentConditions.conditions);
-    console.log(weatherData.description)
-    console.log('temperature minimum', weatherData.days[0].tempmin);
-    console.log('temperatture maximum', weatherData.days[0].tempmax);
 
+    console.log(weatherData);
     
+    dailyTemp.textContent = `${weatherData.currentConditions.temp} °C`;
+    highToday.textContent = `H: ${weatherData.days[0].tempmin}`;
+    lowToday.textContent = `L: ${weatherData.days[0].tempmax}`;
+     dayDescription.textContent = `${weatherData.description}`;
+
+    console.log(weatherData.currentConditions.temp); 
+    console.log('temperature minimum', weatherData.days[0].tempmin);
+    console.log('temperature maximum', weatherData.days[0].tempmax);
+
+    console.log(weatherData.currentConditions.conditions);
+    currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
+    console.log(weatherData.description);
+   
+
     }
 
 renderWeather();
