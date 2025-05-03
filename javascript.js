@@ -32,17 +32,18 @@ async function renderWeather() {
 
     console.log(weatherData);
     
-    dailyTemp.textContent = `${weatherData.currentConditions.temp} °C`;
-    highToday.textContent = `H: ${weatherData.days[0].tempmin}`;
-    lowToday.textContent = `L: ${weatherData.days[0].tempmax}`;
+    dailyTemp.textContent = `${Math.round(weatherData.currentConditions.temp)} °C`;
+    currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
+    highToday.textContent = `H: ${Math.round(weatherData.days[0].tempmin)}`;
+    lowToday.textContent = `L: ${Math.round(weatherData.days[0].tempmax)}`;
      dayDescription.textContent = `${weatherData.description}`;
+
+
 
     console.log(weatherData.currentConditions.temp); 
     console.log('temperature minimum', weatherData.days[0].tempmin);
     console.log('temperature maximum', weatherData.days[0].tempmax);
-
     console.log(weatherData.currentConditions.conditions);
-    currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
     console.log(weatherData.description);
    
 
