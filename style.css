@@ -3,3 +3,11 @@ body {
     margin: 0;
 }
 
+.day{
+    display:flex;
+    gap: 22px; 
+}
+
+h1 {
+    display: none; 
+}

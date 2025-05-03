@@ -26,7 +26,11 @@ async function renderWeather() {
     console.log(weatherData);
     console.log(weatherData.currentConditions.temp)
     console.log(weatherData.currentConditions.conditions);
-        
+    console.log(weatherData.description)
+    console.log('temperature minimum', weatherData.days[0].tempmin);
+    console.log('temperatture maximum', weatherData.days[0].tempmax);
+
+    
     }
 
 renderWeather();
