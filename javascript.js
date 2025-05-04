@@ -15,6 +15,20 @@ async function getWeather() {
          }
     }       
 
+//function to convert date to actual day (mon...sun)
+function whatDayOfWeek(datetimeEpoch){ 
+    const date = new Date(datetimeEpoch * 1000); 
+    const day = date.getDay();
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+    ]
+    return daysOfWeek[day];
+    console.log ("test day of week");
+    console.log(daysOfWeek[day]);
+    
+}
+
+whatDayOfWeek(1746331200);
+
 //original location
 function myLocation (){
      const where = "Toronto";
@@ -26,7 +40,6 @@ async function renderWeather() {
 
     const weatherData = await getWeather();
 
-    console.log(weatherData);
     //main weather section  render to screen
     const dailyTemp = document.querySelector("#temperature");
     const currentCondition = document.querySelector("#current-condition");
@@ -79,14 +92,14 @@ async function renderWeather() {
     dayDescription.textContent = `${weatherData.description}`;
 
      
-    //days of week in short
-    day1.textContent = `${weatherData.days[1].datetime}`;
-    day2.textContent = `${weatherData.days[2].datetime}`;
-    day3.textContent = `${weatherData.days[3].datetime}`;
-    day4.textContent = `${weatherData.days[4].datetime}`;
-    day5.textContent = `${weatherData.days[5].datetime}`;
-    day6.textContent = `${weatherData.days[6].datetime}`;
-    day7.textContent = `${weatherData.days[7].datetime}`;
+    //days of week written in short form 
+    day1.textContent = `${whatDayOfWeek(weatherData.days[1].datetimeEpoch)}`;
+    day2.textContent = `${whatDayOfWeek(weatherData.days[2].datetimeEpoch)}`;
+    day3.textContent = `${whatDayOfWeek(weatherData.days[3].datetimeEpoch)}`;
+    day4.textContent = `${whatDayOfWeek(weatherData.days[4].datetimeEpoch)}`;
+    day5.textContent = `${whatDayOfWeek(weatherData.days[5].datetimeEpoch)}`;
+    day6.textContent = `${whatDayOfWeek(weatherData.days[6].datetimeEpoch)}`;
+    day7.textContent = `${whatDayOfWeek(weatherData.days[7].datetimeEpoch)}`;
 
     //low temperature week 
     day1low.textContent = `L: ${Math.round(weatherData.days[1].tempmin)}`;
@@ -117,8 +130,8 @@ async function renderWeather() {
     day7icon.textContent = `${weatherData.days[7].icon}`;
 
 
-
-
+    //console log information 
+    console.log(weatherData);
     console.log(weatherData.currentConditions.temp); 
     console.log('temperature minimum', weatherData.days[0].tempmin);
     console.log('temperature maximum', weatherData.days[0].tempmax);
