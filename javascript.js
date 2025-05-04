@@ -5,6 +5,35 @@ const highToday = document.querySelector("#hi-today");
 const lowToday = document.querySelector("#low-today");
 const dayDescription = document.querySelector("#current-description")
 
+//day of week 
+const day1 = document.querySelector("#day1");
+const day2 = document.querySelector("#day2");
+const day3 = document.querySelector("#day3");
+const day4 = document.querySelector("#day4");
+const day5 = document.querySelector("#day5");
+const day6 = document.querySelector("#day6");
+const day7 = document.querySelector("#day7");
+
+//low daily week 
+const day1low = document.querySelector("#day1low");
+const day2low = document.querySelector("#day2low");
+const day3low = document.querySelector("#day3low");
+const day4low = document.querySelector("#day4low");
+const day5low = document.querySelector("#day5low");
+const day6low = document.querySelector("#day6low");
+const day7low = document.querySelector("#day7low");
+
+//high daily week
+const day1high = document.querySelector("#day1high");
+const day2high = document.querySelector("#day2high");
+const day3high = document.querySelector("#day3high");
+const day4high = document.querySelector("#day4high");
+const day5high = document.querySelector("#day5high");
+const day6high = document.querySelector("#day6high");
+const day7high = document.querySelector("#day7high");
+
+
+
 async function getWeather() {
   
     try {   
@@ -36,7 +65,36 @@ async function renderWeather() {
     currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
     highToday.textContent = `H: ${Math.round(weatherData.days[0].tempmin)}`;
     lowToday.textContent = `L: ${Math.round(weatherData.days[0].tempmax)}`;
-     dayDescription.textContent = `${weatherData.description}`;
+    dayDescription.textContent = `${weatherData.description}`;
+     
+    //days of week in short
+    day1.textContent = `${weatherData.days[1].datetime}`;
+    day2.textContent = `${weatherData.days[2].datetime}`;
+    day3.textContent = `${weatherData.days[3].datetime}`;
+    day4.textContent = `${weatherData.days[4].datetime}`;
+    day5.textContent = `${weatherData.days[5].datetime}`;
+    day6.textContent = `${weatherData.days[6].datetime}`;
+    day7.textContent = `${weatherData.days[7].datetime}`;
+
+    //low temperature week 
+    day1low.textContent = `L: ${Math.round(weatherData.days[1].tempmin)}`;
+    day2low.textContent = `L: ${Math.round(weatherData.days[2].tempmin)}`;
+    day3low.textContent = `L: ${Math.round(weatherData.days[3].tempmin)}`;
+    day4low.textContent = `L: ${Math.round(weatherData.days[4].tempmin)}`;
+    day5low.textContent = `L: ${Math.round(weatherData.days[5].tempmin)}`;
+    day6low.textContent = `L: ${Math.round(weatherData.days[6].tempmin)}`;
+    day7low.textContent = `L: ${Math.round(weatherData.days[7].tempmin)}`;
+
+
+    //high temperature week 
+    day1high.textContent = `H: ${Math.round(weatherData.days[1].tempmax)}`;
+    day2high.textContent = `H: ${Math.round(weatherData.days[2].tempmax)}`;
+    day3high.textContent = `H: ${Math.round(weatherData.days[3].tempmax)}`;
+    day4high.textContent = `H: ${Math.round(weatherData.days[4].tempmax)}`;
+    day5high.textContent = `H: ${Math.round(weatherData.days[5].tempmax)}`;
+    day6high.textContent = `H: ${Math.round(weatherData.days[6].tempmax)}`;
+    day7high.textContent = `H: ${Math.round(weatherData.days[7].tempmax)}`;
+
 
 
 
