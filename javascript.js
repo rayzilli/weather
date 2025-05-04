@@ -32,6 +32,15 @@ const day5high = document.querySelector("#day5high");
 const day6high = document.querySelector("#day6high");
 const day7high = document.querySelector("#day7high");
 
+//icons
+const day1icon = document.querySelector("#day1icon");
+const day2icon = document.querySelector("#day2icon");
+const day3icon = document.querySelector("#day3icon");
+const day4icon = document.querySelector("#day4icon");
+const day5icon = document.querySelector("#day5icon");
+const day6icon = document.querySelector("#day6icon");
+const day7icon = document.querySelector("#day7icon");
+
 
 
 async function getWeather() {
@@ -94,6 +103,15 @@ async function renderWeather() {
     day5high.textContent = `H: ${Math.round(weatherData.days[5].tempmax)}`;
     day6high.textContent = `H: ${Math.round(weatherData.days[6].tempmax)}`;
     day7high.textContent = `H: ${Math.round(weatherData.days[7].tempmax)}`;
+
+    //icons
+    day1icon.textContent = `${weatherData.days[1].icon}`;
+    day2icon.textContent = `${weatherData.days[2].icon}`;
+    day3icon.textContent = `${weatherData.days[3].icon}`;
+    day4icon.textContent = `${weatherData.days[4].icon}`;
+    day5icon.textContent = `${weatherData.days[5].icon}`;
+    day6icon.textContent = `${weatherData.days[6].icon}`;
+    day7icon.textContent = `${weatherData.days[7].icon}`;
 
 
 
