@@ -41,33 +41,36 @@ function getIcon(icon){
         case "cloudy":
         case "partly-cloudy-day":
         case "partly-cloudy-night":
-            console.log("cloudy");
+            return "images/cloudy.svg";
             break;
         case "rain":
         case "showers-day":
         case "showers-night":
-            console.log("rain");
+            return "images/rain.svg";
             break; 
         case "snow":
         case "snow-showers-day":
         case "snow-showers-night":
-            console.log("snow");
+            return "images/snow.svg"
             break; 
         case "thunder-rain":
         case "thunder-showers-day":
         case "thunder-showers-night":
-            console.log("thunder");
+            return "images/thunderstorm.svg"
             break;
         case "fog":
-            console.log("fog");
+            return "images/fog.svg"
             break; 
         case "wind":
-            console.log("wind");
+            return "images/wind.svg"
             break;
         case "clear-day":
-        case "clear-night":
-            console.log("clear");
+            return "images/clear-day.svg";
             break;  
+        case "clear-night":
+            return "images/clear-night.svg";
+            break; 
+
     }    
 }
 getIcon("clear-day");
@@ -158,13 +161,13 @@ async function renderWeather() {
     day7high.textContent = `H: ${Math.round(weatherData.days[7].tempmax)}`;
 
     //icons
-    day1icon.textContent = `${weatherData.days[1].icon}`;
-    day2icon.textContent = `${weatherData.days[2].icon}`;
-    day3icon.textContent = `${weatherData.days[3].icon}`;
-    day4icon.textContent = `${weatherData.days[4].icon}`;
-    day5icon.textContent = `${weatherData.days[5].icon}`;
-    day6icon.textContent = `${weatherData.days[6].icon}`;
-    day7icon.textContent = `${weatherData.days[7].icon}`;
+    day1icon.src = getIcon(weatherData.days[1].icon);
+    day2icon.src = getIcon(weatherData.days[2].icon);
+    day3icon.src = getIcon(weatherData.days[3].icon);
+    day4icon.src = getIcon(weatherData.days[4].icon);
+    day5icon.src = getIcon(weatherData.days[5].icon);
+    day6icon.src = getIcon(weatherData.days[6].icon);
+    day7icon.src = getIcon(weatherData.days[7].icon);
 
 
     //console log information 
