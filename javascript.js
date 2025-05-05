@@ -23,17 +23,54 @@ function whatDayOfWeek(datetimeEpoch){
     ]
     return daysOfWeek[day];
     console.log ("test day of week");
-    console.log(daysOfWeek[day]);
-    
+    console.log(daysOfWeek[day]); 
 }
 
-whatDayOfWeek(1746331200);
+
 
 //original location
 function myLocation (){
      const where = "Toronto";
      return where; 
 }
+
+
+//icon function
+function getIcon(icon){
+    switch (icon){
+        case "cloudy":
+        case "partly-cloudy-day":
+        case "partly-cloudy-night":
+            console.log("cloudy");
+            break;
+        case "rain":
+        case "showers-day":
+        case "showers-night":
+            console.log("rain");
+            break; 
+        case "snow":
+        case "snow-showers-day":
+        case "snow-showers-night":
+            console.log("snow");
+            break; 
+        case "thunder-rain":
+        case "thunder-showers-day":
+        case "thunder-showers-night":
+            console.log("thunder");
+            break;
+        case "fog":
+            console.log("fog");
+            break; 
+        case "wind":
+            console.log("wind");
+            break;
+        case "clear-day":
+        case "clear-night":
+            console.log("clear");
+            break;  
+    }    
+}
+getIcon("clear-day");
 
 //render weather to page
 async function renderWeather() {
@@ -137,10 +174,10 @@ async function renderWeather() {
     console.log('temperature maximum', weatherData.days[0].tempmax);
     console.log(weatherData.currentConditions.conditions);
     console.log(weatherData.description);
+    console.log(whatDayOfWeek(1746331200));
    
     }
 
 
 renderWeather();
-
 
