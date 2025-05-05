@@ -1,9 +1,25 @@
+//search and change city form
+const btn = document.querySelector("button");
+const cityInput = document.querySelector("#city-input");
+const cityOutput = document.querySelector("#city-name");
+
+let currentCity = "Toronto";
+cityOutput.textContent = currentCity; 
+renderWeather(currentCity);
+
+btn.addEventListener("click",() =>{
+      console.log("listener button click event");
+      const cityName = cityInput.value;
+      cityOutput.textContent = cityName; 
+      renderWeather(cityName); 
+      
+});
+
 
 //get weather from api 
-async function getWeather() {
+async function getWeather(location) {
     try {   
         const apiKey = '9WDMMPUPV5SG59HXRLFBW949G';
-        const location = myLocation(); 
         const url = (`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=${apiKey}&unitGroup=metric`);
         const response = await fetch (url);
         if (!response.ok)
@@ -27,12 +43,6 @@ function whatDayOfWeek(datetimeEpoch){
 }
 
 
-
-//original location
-function myLocation (){
-     const where = "Toronto";
-     return where; 
-}
 
 
 //icon function
@@ -76,9 +86,9 @@ function getIcon(icon){
 getIcon("clear-day");
 
 //render weather to page
-async function renderWeather() {
+async function renderWeather(location) {
 
-    const weatherData = await getWeather();
+    const weatherData = await getWeather(location);
 
     //main weather section  render to screen
     const dailyTemp = document.querySelector("#temperature");
@@ -127,8 +137,8 @@ async function renderWeather() {
     //main weather section 
     dailyTemp.textContent = `${Math.round(weatherData.currentConditions.temp)} °C`;
     currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
-    highToday.textContent = `H: ${Math.round(weatherData.days[0].tempmin)}`;
-    lowToday.textContent = `L: ${Math.round(weatherData.days[0].tempmax)}`;
+    highToday.textContent = `L: ${Math.round(weatherData.days[0].tempmin)}`;
+    lowToday.textContent = `H: ${Math.round(weatherData.days[0].tempmax)}`;
     dayDescription.textContent = `${weatherData.description}`;
 
      
@@ -182,5 +192,5 @@ async function renderWeather() {
     }
 
 
-renderWeather();
+renderWeather(currentCity);
 
