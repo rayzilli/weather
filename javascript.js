@@ -85,7 +85,49 @@ function getIcon(icon){
 
     }    
 }
-getIcon("clear-day");
+
+function updateBackground(weather){
+    let backgroundImage; 
+    switch (weather){
+        case "cloudy":
+            case "partly-cloudy-day":
+            case "partly-cloudy-night":
+                backgroundImage = "images/cloudy.svg";
+                break;
+            case "rain":
+            case "showers-day":
+            case "showers-night":
+                return "images/rain.svg";
+                break; 
+            case "snow":
+            case "snow-showers-day":
+            case "snow-showers-night":
+                return "images/snow.svg"
+                break; 
+            case "thunder-rain":
+            case "thunder-showers-day":
+            case "thunder-showers-night":
+                return "images/thunderstorm.svg"
+                break;
+            case "fog":
+                return "images/fog.svg"
+                break; 
+            case "wind":
+                return "images/wind.svg"
+                break;
+            case "clear-day":
+                return "images/clear-day.svg";
+                break;  
+            case "clear-night":
+                return "images/clear-night.svg";
+                break; 
+            default:
+                return "icon";
+                break; 
+    }
+
+    // document.body.style.backgroundImage = `url(${backgroundImage})`;
+}
 
 //render weather to page
 async function renderWeather(location) {
@@ -95,7 +137,7 @@ async function renderWeather(location) {
         console.error("No weather data available");
         return; 
     }
-
+ 
     //main weather section  render to screen
     const dailyTemp = document.querySelector("#temperature");
     const currentCondition = document.querySelector("#current-condition");
@@ -141,7 +183,7 @@ async function renderWeather(location) {
     const day7icon = document.querySelector("#day7icon");
 
     //main weather section 
-    dailyTemp.textContent = `${Math.round(weatherData.currentConditions.temp)} °C`;
+    dailyTemp.textContent = `${Math.round(weatherData.currentConditions.temp)}`;
     currentCondition.textContent = `${weatherData.currentConditions.conditions}`;
     highToday.textContent = `L: ${Math.round(weatherData.days[0].tempmin)}`;
     lowToday.textContent = `H: ${Math.round(weatherData.days[0].tempmax)}`;
@@ -184,6 +226,10 @@ async function renderWeather(location) {
     day5icon.src = getIcon(weatherData.days[5].icon);
     day6icon.src = getIcon(weatherData.days[6].icon);
     day7icon.src = getIcon(weatherData.days[7].icon);
+
+    //background
+    // updateBackground(weatherData.currentConditions.icon);
+
 
     //console log information 
     console.log(weatherData);
