@@ -8,11 +8,14 @@ cityOutput.textContent = currentCity;
 renderWeather(currentCity);
 
 btn.addEventListener("click",() =>{
-      console.log("listener button click event");
-      const cityName = cityInput.value;
-      cityOutput.textContent = cityName; 
+      const cityName = cityInput.value.trim();
+      if(cityName === ""){
+        return; 
+      }
+      else{
+        cityOutput.textContent = cityName; 
       renderWeather(cityName); 
-      
+      }  
 });
 
 
@@ -38,11 +41,7 @@ function whatDayOfWeek(datetimeEpoch){
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
     ]
     return daysOfWeek[day];
-    console.log ("test day of week");
-    console.log(daysOfWeek[day]); 
 }
-
-
 
 
 //icon function
@@ -80,6 +79,9 @@ function getIcon(icon){
         case "clear-night":
             return "images/clear-night.svg";
             break; 
+        default:
+            return "icon";
+            break; 
 
     }    
 }
@@ -89,6 +91,10 @@ getIcon("clear-day");
 async function renderWeather(location) {
 
     const weatherData = await getWeather(location);
+    if (!weatherData){
+        console.error("No weather data available");
+        return; 
+    }
 
     //main weather section  render to screen
     const dailyTemp = document.querySelector("#temperature");
@@ -179,18 +185,10 @@ async function renderWeather(location) {
     day6icon.src = getIcon(weatherData.days[6].icon);
     day7icon.src = getIcon(weatherData.days[7].icon);
 
-
     //console log information 
     console.log(weatherData);
-    console.log(weatherData.currentConditions.temp); 
-    console.log('temperature minimum', weatherData.days[0].tempmin);
-    console.log('temperature maximum', weatherData.days[0].tempmax);
-    console.log(weatherData.currentConditions.conditions);
-    console.log(weatherData.description);
-    console.log(whatDayOfWeek(1746331200));
    
     }
 
-
-renderWeather(currentCity);
+// renderWeather(currentCity);
 
