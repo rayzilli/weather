@@ -70,7 +70,7 @@ section#weekly-weather > h2{
 }
 
 img[id$="icon"] {
-    filter: invert(100%);
+    filter: invert(10%);
   }
   
 
